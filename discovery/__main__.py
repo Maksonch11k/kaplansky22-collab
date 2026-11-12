@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 
 from .cycle import advance_run, demo_run, read_state, start_run, summary
+from .data_merge import merge_data
 
 
 def main(argv=None):
@@ -30,6 +31,10 @@ def main(argv=None):
     demo = commands.add_parser("demo", help="Offline rediscovery of a known core using a hand-authored proposal")
     demo.add_argument("--output", required=True, type=Path)
     demo.add_argument("--data", default=Path("data"), type=Path)
+    merge = commands.add_parser("merge-data", help="Verify and combine a base atlas with saved feedback for a new run")
+    merge.add_argument("--base", required=True, type=Path)
+    merge.add_argument("--feedback", required=True, type=Path)
+    merge.add_argument("--output", required=True, type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "start":
@@ -41,6 +46,8 @@ def main(argv=None):
             result = advance_run(args.run, args.proposal)
         elif args.command == "demo":
             result = demo_run(args.output, data=args.data)
+        elif args.command == "merge-data":
+            result = merge_data(args.base, args.feedback, args.output)
         else:
             result = summary(read_state(args.run))
     except (ValueError, OSError, KeyError, TypeError) as error:
