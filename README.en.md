@@ -20,7 +20,19 @@ python -m models.mlsat train --output runs/ml
 python -m models.mlsat generate --family parallel22 --count 4 --output runs/sat
 ```
 
-The learned target is **historical bounded UNKNOWN**, not torsion-freedom. CEM learns to avoid certified cores; it does not recognize every possible torsion obstruction. The historical proof-discovery engine is not bundled. New proofs can be produced by any external tool and must pass the independent verifier.
+The learned target is **historical bounded UNKNOWN**, not torsion-freedom. CEM learns to avoid certified cores; it does not recognize every possible torsion obstruction. The historical proof-discovery engine is not bundled. A new independent bounded producer in `discovery/` accepts word/relation hints from your existing chat and emits certificates that must pass the unchanged verifier.
+
+## Run with your existing chat agent
+
+Ask Codex: "Run three rounds of the chat-guided obstruction search for trinomial22 following docs/LLM_SEARCH.md. Propose hypotheses yourself, run the local proof search, replay certificates, feed verified cores into the next round, and save the report. No API or cloud jobs."
+
+The agent drives `python -m discovery start`, reads the generated prompt, writes data-only hypotheses, and calls `python -m discovery advance` until the requested rounds finish. The saved run can be resumed in another chat. No API connection, model service, keys, or generated-code execution is involved. See [the protocol](docs/LLM_SEARCH.md).
+
+```sh
+python -m discovery demo --output runs/llm-demo
+```
+
+The offline demo reconstructs a published obstruction from a hand-authored hint; it is not an LLM experiment or a new discovery.
 
 An obstruction proves nontrivial finite-order torsion in the **presented source group**, and in every matching extension of its core within the same fixed ordered family. It does **not** automatically rule out torsion-free quotients. A bounded checker timing out is not a proof of torsion-freedom.
 

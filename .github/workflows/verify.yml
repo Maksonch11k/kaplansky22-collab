@@ -59,3 +59,7 @@ jobs:
         run: |
           python -m models.mlsat train --output runs/ci-ml
           python -m models.mlsat generate --family parallel22 --count 2 --output runs/ci-sat
+      - name: Rediscover and independently replay the offline chat-cycle demo
+        run: |
+          python -m discovery demo --output runs/ci-chat
+          python -m k22 verify --data runs/ci-chat/verified
