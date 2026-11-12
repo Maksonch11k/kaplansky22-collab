@@ -2,6 +2,14 @@
 
 These instructions apply throughout this repository. / Эти инструкции действуют во всём репозитории.
 
+## Chat-guided search / Поиск из текущего чата
+
+When the user asks to run the LLM obstruction cycle, follow [docs/LLM_SEARCH.md](docs/LLM_SEARCH.md). You are the hypothesis proposer in the existing chat: no API key or separate model service is required. Run `discovery start`, read the returned prompt, reason about the actual candidate, write a bounded proposal JSON, then run `discovery advance`. Repeat until the requested round budget is complete or a concrete blocker occurs; do not hand the user each intermediate command. If no budget is supplied, use three rounds with the documented defaults. A request to explain the process does not start a search. A request to stop overrides this loop immediately.
+
+Resume an explicitly named run with `discovery status`; do not replace its saved candidate. If the user asks to resume the latest run without a path, inspect only this repository's `runs/*/state.json` and select the most recent unfinished run, stating the path. Never invent a proposal from another candidate, copy a fixture as a new finding, or write generated code into the proof search. An empty `targets` list is an honest no-hypothesis result. Treat the proof producer as untrusted: only independent `k22` replay permits a core into feedback. Do not publish run artifacts automatically; prepare a focused PR only when authorized.
+
+Когда пользователь просит запустить цикл, самостоятельно выполните все его раунды через локальные команды и JSON, используя рассуждения текущего чата. По умолчанию — три раунда. Не просите API-ключ и не требуйте, чтобы пользователь вручную передавал промежуточные файлы. Состояние сохраняется, остановленный пользователем поиск не возобновляйте без новой команды. Подробный протокол и формат ответа находятся в `docs/LLM_SEARCH.md`.
+
 ## English
 
 1. Read `README.md`, `CONTRIBUTING.md`, `docs/PROBLEM.md`, and `docs/CERTIFICATES.md` before working. For model tasks also read `docs/MODELS.md`. Follow the user's assigned scope; do not restart a mathematical campaign when the task is documentation, review, or packaging.

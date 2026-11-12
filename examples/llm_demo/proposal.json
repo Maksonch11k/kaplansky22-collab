@@ -1,0 +1,18 @@
+{
+  "candidate_sha256": "8aa2e8cc2102680d8915816c71caa1f07ea5f5baef413c3c9b8b47a70672a7da",
+  "format": "k22-llm-proposal-v1",
+  "targets": [
+    {
+      "power": 2,
+      "preferred_relators": [
+        200,
+        211
+      ],
+      "reason": "Hand-authored DEMO fixture for rediscovering a known two-edge core; no LLM call and no new mathematical discovery. The candidate preserves the source matching order and orientation.",
+      "word": [
+        23,
+        -40
+      ]
+    }
+  ]
+}

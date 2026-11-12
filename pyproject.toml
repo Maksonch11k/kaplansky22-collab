@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kaplansky22-collab"
-version = "0.1.0"
+version = "0.2.0"
 description = "Certified matching obstructions and reproducible ML baselines for collaborative 22x22 research"
 requires-python = ">=3.11"
 readme = "README.en.md"
@@ -15,4 +15,4 @@ dependencies = []
 ml = ["numpy>=2.0,<3", "scikit-learn>=1.5,<2", "z3-solver>=4.13,<6"]
 
 [tool.setuptools]
-packages = ["k22", "models"]
+packages = ["k22", "models", "discovery"]
