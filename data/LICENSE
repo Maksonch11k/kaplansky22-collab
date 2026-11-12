@@ -1,0 +1,10 @@
+SPDX-License-Identifier: CC0-1.0
+
+To the extent possible under law, the contributors have waived copyright and
+related or neighboring rights in the published mathematical family data,
+obstruction certificates, provenance manifests and the historical feature
+tables (models/training_records.json and models/training_manifest.json).
+
+The full CC0 1.0 Universal text is in ../LICENSES/CC0-1.0.txt.
+This dedication does not relicense third-party software or the original paper;
+neither is distributed here. New software in this repository uses the MIT License.

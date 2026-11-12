@@ -1,0 +1,24 @@
+name: Улучшение модели или задача для агента
+description: Define a bounded, reproducible contribution to the search
+title: '[Model] '
+labels: [machine-learning, help wanted]
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: Задача / Task
+      description: What should change and why might it improve search?
+    validations:
+      required: true
+  - type: textarea
+    id: benchmark
+    attributes:
+      label: Сравнение / Evaluation
+      description: Family, atlas checkpoint, budget, seeds, independent control, metrics and proof-checking plan.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Готовый результат / Acceptance criteria
+      description: Make the task small enough for one person or agent to submit a reviewable PR.

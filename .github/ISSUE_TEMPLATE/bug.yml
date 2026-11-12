@@ -1,0 +1,12 @@
+name: Ошибка в коде или проверке
+description: Report a reproducible problem
+title: '[Bug] '
+labels: [bug]
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Шаги, ожидаемый и фактический результат / Reproduction
+      description: Include the commit, Python version and minimal input. Do not attach secrets or private logs.
+    validations:
+      required: true

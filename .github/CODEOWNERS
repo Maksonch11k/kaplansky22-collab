@@ -1,0 +1,6 @@
+# Proof semantics and CI changes require particular care.
+/k22/ @Maksonch11k
+/tests/test_verifier.py @Maksonch11k
+/.github/ @Maksonch11k
+/data/families/ @Maksonch11k
+/LICENSE* @Maksonch11k

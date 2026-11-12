@@ -1,0 +1,33 @@
+name: Новый запрет или математическая идея
+description: Propose a certified obstruction or an explicitly unproved hypothesis
+title: '[Obstruction] '
+labels: [mathematics]
+body:
+  - type: dropdown
+    id: status
+    attributes:
+      label: Статус / Status
+      options:
+        - Hypothesis — proof not available
+        - Certificate available — needs independent replay
+    validations:
+      required: true
+  - type: input
+    id: family
+    attributes:
+      label: Семейство и хеш / Family and hash
+      description: Preserve the exact ordered left/right images.
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Утверждение и доказательство / Claim and evidence
+      description: Give the optional core, word w, power q and nonidentity witness, or explain the unproved idea.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Воспроизведение / Reproduction
+      description: Link a branch or attach JSON. Include exact commands, seed and tool versions. Never include keys.
